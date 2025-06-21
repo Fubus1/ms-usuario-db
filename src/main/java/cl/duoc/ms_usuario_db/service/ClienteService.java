@@ -23,6 +23,11 @@ public class ClienteService {
         }
         return clienteDTO;
     }
+    public ClienteDTO createCliente(ClienteDTO clienteDTO){
+        Cliente cliente = translateDtoToEntity(clienteDTO);
+        Cliente clienteGuardado = clienteRepository.save(cliente);
+        return translateEntityToDto(clienteGuardado);
+    }
 
     public ClienteDTO translateEntityToDto(Cliente cliente){
         ClienteDTO dto = new ClienteDTO();
